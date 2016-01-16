@@ -1,6 +1,7 @@
 package osdesign.model;
 
 import java.util.*;
+
 /**
  * Created by pokerface_lx
  */
@@ -58,6 +59,7 @@ public class Equipment {
 
     /***
      * 判断设备是否相同，输入变量为另一设备名称
+     *
      * @param name
      * @return
      */

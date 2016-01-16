@@ -18,6 +18,7 @@ public class EquipmentRequest {
 
     /***
      * EquipmentRequest(String name) 请求的构造函数
+     *
      * @param name
      */
     public EquipmentRequest(String name) {
@@ -27,6 +28,7 @@ public class EquipmentRequest {
 
     /***
      * EquipmentRequest(String name, int number) 请求的构造函数
+     *
      * @param name
      * @param number
      */
@@ -37,12 +39,13 @@ public class EquipmentRequest {
 
     /***
      * 判断两个请求是否相同
+     *
      * @param o
      * @return boolean
      */
     @Override
     public boolean equals(Object o) {
-        try{
+        try {
             EquipmentRequest request = (EquipmentRequest) o;
             if (this.getName().equals(request.getName()) && this.getNumber() == request.getNumber()) {
                 return true;

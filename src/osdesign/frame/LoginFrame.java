@@ -25,6 +25,7 @@ public class LoginFrame extends JFrame {
 
     /***
      * 返回用户名的面板
+     *
      * @return
      */
     private Component getNamePanel() {
