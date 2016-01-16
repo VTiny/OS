@@ -1,6 +1,4 @@
-package osdesign;
-
-import javafx.stage.Screen;
+package osdesign.frame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,8 +37,5 @@ public class LoginFrame extends JFrame {
         return panel;
     }
 
-    public static void main(String[] args) {
-        new LoginFrame("test");
-    }
 
 }
