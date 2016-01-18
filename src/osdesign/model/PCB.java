@@ -1,82 +1,102 @@
 package osdesign.model;
 
 public class PCB {
-    public static int idNum = 1;// 默认ID
-    private int ID;
-    private int[] Max = new int[3];// 最大需求矩阵
-    private int[] Allocation = new int[3];// 已分配矩阵
-    private int[] Need = new int[3];// 需求矩阵
-    //
-    private PCBState state;// PCB状态
-    private int memory;// 所需内存
-    private int runTime;// 运行时间
+	public static int idNum = 1;// 默认ID
+	private int ID;
+	private int[] Max = new int[3];// 最大需求矩阵
+	private int[] Allocation = new int[3];// 已分配矩阵
+	private int[] Need = new int[3];// 需求矩阵
+	private int[] Work = new int[3];
 
-    public PCB() {
-        ID = idNum;
-        idNum++;
-    }
+	public int[] getWork() {
+		return Work;
+	}
 
-    public static int getIdNum() {
-        return idNum;
-    }
+	public void setWork(int[] work) {
+		Work = work;
+	}
 
-    public static void setIdNum(int idNum) {
-        PCB.idNum = idNum;
-    }
+	//
+	private PCBState state;// PCB状态
+	private int memory;// 所需内存
+	private int runTime;// 运行时间
+	private int[] equipment = new int[2];
 
-    public int getID() {
-        return ID;
-    }
+	public int[] getEquipment() {
+		return equipment;
+	}
 
-    public void setID(int iD) {
-        ID = iD;
-    }
+	public void setEquipment(int[] equipment) {
+		this.equipment = equipment;
+	}
 
-    public PCBState getState() {
-        return state;
-    }
+	public PCB() {
+		ID = idNum;
+		idNum++;
+		state = PCBState.WAIT;
+	}
 
-    public void setState(PCBState state) {
-        this.state = state;
-    }
+	public static int getIdNum() {
+		return idNum;
+	}
 
-    public int getRunTime() {
-        return runTime;
-    }
+	public static void setIdNum(int idNum) {
+		PCB.idNum = idNum;
+	}
 
-    public void setRunTime(int runTime) {
-        this.runTime = runTime;
-    }
+	public int getID() {
+		return ID;
+	}
 
-    public int getMemory() {
-        return memory;
-    }
+	public void setID(int iD) {
+		ID = iD;
+	}
 
-    public void setMemory(int memory) {
-        this.memory = memory;
-    }
+	public PCBState getState() {
+		return state;
+	}
 
-    public int[] getMax() {
-        return Max;
-    }
+	public void setState(PCBState state) {
+		this.state = state;
+	}
 
-    public void setMax(int[] max) {
-        Max = max;
-    }
+	public int getRunTime() {
+		return runTime;
+	}
 
-    public int[] getAllocation() {
-        return Allocation;
-    }
+	public void setRunTime(int runTime) {
+		this.runTime = runTime;
+	}
 
-    public void setAllocation(int[] allocation) {
-        Allocation = allocation;
-    }
+	public int getMemory() {
+		return memory;
+	}
 
-    public int[] getNeed() {
-        return Need;
-    }
+	public void setMemory(int memory) {
+		this.memory = memory;
+	}
 
-    public void setNeed(int[] need) {
-        Need = need;
-    }
+	public int[] getMax() {
+		return Max;
+	}
+
+	public void setMax(int[] max) {
+		Max = max;
+	}
+
+	public int[] getAllocation() {
+		return Allocation;
+	}
+
+	public void setAllocation(int[] allocation) {
+		Allocation = allocation;
+	}
+
+	public int[] getNeed() {
+		return Need;
+	}
+
+	public void setNeed(int[] need) {
+		Need = need;
+	}
 }

@@ -7,7 +7,7 @@ import osdesign.model.Equipment;
  * Created by pokerface_lx
  */
 public class Hello {
-    public static void main(String[] args) {
-        new LoginFrame("test");
-    }
+	public static void main(String[] args) {
+		new LoginFrame();
+	}
 }
