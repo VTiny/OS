@@ -57,7 +57,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (textField.getText().equals("admin") & textField_1.getText().equals("admin")) {
-			new CourseSimulate_1();
+			new MainFrame();
 			this.dispose();
 		} else {
 			JOptionPane.showMessageDialog(this, "密码不正确请重新输入");

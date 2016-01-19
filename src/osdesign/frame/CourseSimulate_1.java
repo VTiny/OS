@@ -3,6 +3,7 @@ package osdesign.frame;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -64,7 +65,12 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Banker.pcbNum = (Integer.parseInt(textField.getText()));
-		new CourseSimulate_2();
+		try {
+			new CourseSimulate_2();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		this.dispose();
 	}
 }

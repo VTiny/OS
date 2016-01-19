@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
@@ -23,8 +24,19 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 	private JTable table;
 	private JScrollPane scrollpane;
 	private JButton button;
-	private PCB[] pcbs = new PCB[Banker.pcbNum];
+	private PCB[] pcbs;
 
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					CourseSimulate_3 window = new CourseSimulate_3();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	/**
 	 * Create the application.
 	 */
@@ -42,7 +54,7 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		this.getContentPane().setLayout(null);
 		this.setVisible(true);
 
-		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "设备A", "设备B", "内存", "时间" };
+		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "设备A", "设备B","内存", "时间" };
 		tableModel = new DefaultTableModel(colunmNames, Banker.pcbNum);
 		for (int i = 0; i < Banker.pcbNum; i++) {
 			Object name = "P" + i;
@@ -69,27 +81,52 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 
 		button = new JButton("开始模拟");
 		button.addActionListener(this);
-		button.setBounds(351, 267, 93, 23);
+		button.setBounds(367, 280, 93, 23);
 		this.getContentPane().add(button);
+
+		JButton button_1 = new JButton("加载默认数据");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				defaultValue();
+			}
+		});
+		button_1.setBounds(147, 280, 113, 23);
+		getContentPane().add(button_1);
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		init();
 		try {
-			new CourseSimulate_4();
-		} catch (InterruptedException e1) {
+			CourseSimulate_4 courseSimulate_4 = new CourseSimulate_4();
+		} catch (InterruptedException | IOException e1) {
 			e1.printStackTrace();
 		}
 		this.dispose();
 	}
 
 	public void init() {
+		pcbs = new PCB[Banker.pcbNum];
 		for (int i = 0; i < pcbs.length; i++) {
 			pcbs[i] = new PCB();
 			setValues(pcbs[i], i);
 			Banker.waitQueue.add(pcbs[i]);
 		}
+	}
+
+	public void defaultValue() {
+		Banker.pcbNum = 5;
+		Banker.resource[0] = 10;
+		Banker.resource[1] = 5;
+		Banker.resource[2] = 7;
+		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "设备A", "设备B", "内存", "时间" };
+		Object[][] data = { { "P0", "7", "5", "3", "0", "1", "0", "1", "1", "1", "1" },
+				{ "P1", "3", "2", "2", "2", "0", "0", "1", "1", "1", "1" },
+				{ "P2", "9", "0", "2", "3", "0", "2", "1", "1", "1", "1" },
+				{ "P3", "2", "2", "2", "2", "1", "1", "1", "1", "1", "1" },
+				{ "P4", "4", "3", "3", "0", "0", "2", "1", "1", "1", "1" } };
+		tableModel = new DefaultTableModel(data, colunmNames);
+		table.setModel(tableModel);
 	}
 
 	public void setValues(PCB pcb, int i) {

@@ -1,8 +1,10 @@
 package osdesign.util;
 
+import osdesign.model.EquipmentRequest;
 import osdesign.model.PCB;
 import osdesign.model.PCBState;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Banker {
@@ -11,6 +13,8 @@ public class Banker {
 	public static ArrayList<PCB> safeQueue = new ArrayList<>();
 	public static int pcbNum = 0;
 	private int available[] = new int[3];
+	private EquipmentRequest equipmentRequest;
+	private EquipmentManagement equipmentManagement=new EquipmentManagement();
 
 	public ArrayList<PCB> getWaitQueue() {
 		return waitQueue;
@@ -26,7 +30,7 @@ public class Banker {
 		}
 	}
 
-	public boolean banker_algorithm() {
+	public boolean banker_algorithm() throws IOException {
 		while (safeQueue.size() != waitQueue.size()) {
 			int num = 0;
 			for (PCB j : waitQueue) {
@@ -40,9 +44,14 @@ public class Banker {
 								j.getWork()[1] += available[1];
 								available[2] += j.getAllocation()[2];
 								j.getWork()[2] += available[2];
+								equipmentRequest=new EquipmentRequest("设备A", j.getEquipment()[0]);
+								equipmentManagement.run(equipmentRequest);
+								equipmentRequest=new EquipmentRequest("设备B", j.getEquipment()[1]);
+								equipmentManagement.run(equipmentRequest);
 								j.setState(PCBState.WAIT);
 								safeQueue.add(j);
 								j.setState(PCBState.FINISH);
+								num = 0;
 							} else {
 								num++;
 								continue;
@@ -64,7 +73,7 @@ public class Banker {
 		return true;
 	}
 
-	public String run() {
+	public String run() throws IOException {
 		initAvailable();
 		if (banker_algorithm()) {
 			return "存在安全序列";
