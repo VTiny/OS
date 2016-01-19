@@ -10,34 +10,34 @@ import java.awt.event.ActionListener;
  */
 public class ErrorFrame extends BaseFrame implements ActionListener {
 
-    private JButton confirmBtn;
-    private JButton cancelBtn;
+	private JButton confirmBtn;
+	private JButton cancelBtn;
 
-    public ErrorFrame(String error) {
-        this.setTitle("错误");
-        this.setLayout(new BorderLayout());
+	public ErrorFrame(String error) {
+		this.setTitle("错误");
+		this.setLayout(new BorderLayout());
 
-        JLabel errorLabel = new JLabel(error, 200);
-        this.getContentPane().add(errorLabel, BorderLayout.NORTH);
+		JLabel errorLabel = new JLabel(error, 200);
+		this.getContentPane().add(errorLabel, BorderLayout.NORTH);
 
-        JPanel btnPanel = new JPanel(new FlowLayout());
-        confirmBtn = new JButton("确认");
-        cancelBtn = new JButton("取消");
-        confirmBtn.addActionListener(this);
-        cancelBtn.addActionListener(this);
-        btnPanel.add(cancelBtn);
-        btnPanel.add(confirmBtn);
-        cancelBtn.setVisible(false);
-        this.getContentPane().add(btnPanel, BorderLayout.SOUTH);
+		JPanel btnPanel = new JPanel(new FlowLayout());
+		confirmBtn = new JButton("确认");
+		cancelBtn = new JButton("取消");
+		confirmBtn.addActionListener(this);
+		cancelBtn.addActionListener(this);
+		btnPanel.add(cancelBtn);
+		btnPanel.add(confirmBtn);
+		cancelBtn.setVisible(false);
+		this.getContentPane().add(btnPanel, BorderLayout.SOUTH);
 
-        this.pack();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 
-    }
+	}
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        this.dispose();
-    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		this.dispose();
+	}
 }

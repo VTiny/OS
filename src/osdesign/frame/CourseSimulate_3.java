@@ -1,10 +1,8 @@
 package osdesign.frame;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -26,20 +24,6 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 	private JButton button;
 	private PCB[] pcbs;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CourseSimulate_3 window = new CourseSimulate_3();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	/**
-	 * Create the application.
-	 */
 	public CourseSimulate_3() {
 		initialize();
 	}
@@ -54,7 +38,7 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		this.getContentPane().setLayout(null);
 		this.setVisible(true);
 
-		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "设备A", "设备B","内存", "时间" };
+		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "内存", "时间" };
 		tableModel = new DefaultTableModel(colunmNames, Banker.pcbNum);
 		for (int i = 0; i < Banker.pcbNum; i++) {
 			Object name = "P" + i;
@@ -98,10 +82,11 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		init();
 		try {
-			CourseSimulate_4 courseSimulate_4 = new CourseSimulate_4();
+			new CourseSimulate_4();
 		} catch (InterruptedException | IOException e1) {
 			e1.printStackTrace();
 		}
+
 		this.dispose();
 	}
 
@@ -119,12 +104,12 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		Banker.resource[0] = 10;
 		Banker.resource[1] = 5;
 		Banker.resource[2] = 7;
-		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "设备A", "设备B", "内存", "时间" };
-		Object[][] data = { { "P0", "7", "5", "3", "0", "1", "0", "1", "1", "1", "1" },
-				{ "P1", "3", "2", "2", "2", "0", "0", "1", "1", "1", "1" },
-				{ "P2", "9", "0", "2", "3", "0", "2", "1", "1", "1", "1" },
-				{ "P3", "2", "2", "2", "2", "1", "1", "1", "1", "1", "1" },
-				{ "P4", "4", "3", "3", "0", "0", "2", "1", "1", "1", "1" } };
+		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C","内存", "时间" };
+		Object[][] data = { { "P0", "7", "5", "3", "0", "1", "0", "5", "1" },
+				{ "P1", "3", "2", "2", "2", "0", "0","10", "2" },
+				{ "P2", "9", "0", "2", "3", "0", "2","15", "3" },
+				{ "P3", "2", "2", "2", "2", "1", "1","20", "4" },
+				{ "P4", "4", "3", "3", "0", "0", "2","25", "5" }};
 		tableModel = new DefaultTableModel(data, colunmNames);
 		table.setModel(tableModel);
 	}
@@ -142,13 +127,11 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		allocation[0] = Integer.parseInt((String) table.getValueAt(i, 4));
 		allocation[1] = Integer.parseInt((String) table.getValueAt(i, 5));
 		allocation[2] = Integer.parseInt((String) table.getValueAt(i, 6));
-		equipment[0] = Integer.parseInt((String) table.getValueAt(i, 7));
-		equipment[1] = Integer.parseInt((String) table.getValueAt(i, 8));
 		need[0] = max[0] - allocation[0];
 		need[1] = max[1] - allocation[1];
 		need[2] = max[2] - allocation[2];
-		memory = Integer.parseInt((String) table.getValueAt(i, 9));
-		runTime = Integer.parseInt((String) table.getValueAt(i, 10));
+		memory = Integer.parseInt((String) table.getValueAt(i, 7));
+		runTime = Integer.parseInt((String) table.getValueAt(i, 8));
 		pcb.setMax(max);
 		pcb.setAllocation(allocation);
 		pcb.setNeed(need);

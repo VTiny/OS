@@ -16,18 +16,6 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 	private JTextField textField;
 	public static int pcbNum;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CourseSimulate_1 window = new CourseSimulate_1();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
@@ -47,18 +35,18 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 		this.getContentPane().setLayout(null);
 		this.setVisible(true);
 
-		JLabel label = new JLabel("请输入进程数");
-		label.setBounds(61, 97, 92, 37);
+		JLabel label = new JLabel("请输入进程数：");
+		label.setBounds(91, 104, 92, 37);
 		getContentPane().add(label);
 
 		textField = new JTextField();
-		textField.setBounds(163, 105, 66, 21);
+		textField.setBounds(218, 112, 66, 21);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
 		JButton button = new JButton("下一步");
 		button.addActionListener(this);
-		button.setBounds(319, 216, 93, 23);
+		button.setBounds(316, 213, 93, 23);
 		getContentPane().add(button);
 	}
 

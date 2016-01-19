@@ -29,7 +29,7 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 	 * Create the application.
 	 * 
 	 * @throws InterruptedException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public CourseSimulate_4() throws InterruptedException, IOException {
 		setTitle("模拟结果");
@@ -40,7 +40,7 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 	 * Initialize the contents of the frame.
 	 * 
 	 * @throws InterruptedException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	private void initialize() throws InterruptedException, IOException {
 		bestFit.initMemory();
@@ -93,11 +93,11 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 		button.addActionListener(this);
 		button.setBounds(420, 273, 93, 23);
 		getContentPane().add(button);
-		
+
 		JButton button_1 = new JButton("内存使用情况");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-				new MemFrame();				
+				new MemFrame();
 			}
 		});
 		button_1.setBounds(67, 273, 129, 23);

@@ -14,7 +14,7 @@ public class Banker {
 	public static int pcbNum = 0;
 	private int available[] = new int[3];
 	private EquipmentRequest equipmentRequest;
-	private EquipmentManagement equipmentManagement=new EquipmentManagement();
+	private EquipmentManagement equipmentManagement = new EquipmentManagement();
 
 	public ArrayList<PCB> getWaitQueue() {
 		return waitQueue;
@@ -44,9 +44,9 @@ public class Banker {
 								j.getWork()[1] += available[1];
 								available[2] += j.getAllocation()[2];
 								j.getWork()[2] += available[2];
-								equipmentRequest=new EquipmentRequest("设备A", j.getEquipment()[0]);
+								equipmentRequest = new EquipmentRequest("设备A", j.getEquipment()[0]);
 								equipmentManagement.run(equipmentRequest);
-								equipmentRequest=new EquipmentRequest("设备B", j.getEquipment()[1]);
+								equipmentRequest = new EquipmentRequest("设备B", j.getEquipment()[1]);
 								equipmentManagement.run(equipmentRequest);
 								j.setState(PCBState.WAIT);
 								safeQueue.add(j);

@@ -18,7 +18,7 @@ public class BestFit {
 	public Memory alloc(int MemoryLength) {
 		Memory nf = null;
 		for (Memory object : kongxianList) {
-			if (object.getLength() >= MemoryLength&&object.getMemState().equals(MemState.unused)) {
+			if (object.getLength() >= MemoryLength && object.getMemState().equals(MemState.unused)) {
 				nf = new Memory(object.getStar(), object.getStar() + MemoryLength - 1, MemoryLength);
 				int i = kongxianList.indexOf(object);
 				kongxianList.remove(i);

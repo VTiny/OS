@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class HelloFrame extends JFrame implements ActionListener {
 	private JButton button;
+
 	/**
 	 * Launch the application.
 	 */
@@ -28,15 +29,15 @@ public class HelloFrame extends JFrame implements ActionListener {
 		this.setTitle("欢迎使用本系统");
 		this.setBounds(100, 100, 450, 300);
 		this.getContentPane().setLayout(null);
-        setVisible(true);  
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		button = new JButton("进入系统");
 		button.addActionListener(this);
 		this.setVisible(true);
 		button.setBounds(167, 228, 93, 23);
 		this.getContentPane().add(button);
-		
+
 	}
 
 	public void actionPerformed(ActionEvent e) {

@@ -52,7 +52,7 @@ public class MemFrame {
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Object[] colunmNames = { "内存块", "Start", "End","Length"};
+		Object[] colunmNames = { "内存块", "Start", "End", "Length" };
 		tableModel = new DefaultTableModel(colunmNames, 0);
 		frame.getContentPane().setLayout(null);
 		table = new JTable(tableModel);
@@ -71,13 +71,14 @@ public class MemFrame {
 		button.setBounds(307, 224, 93, 23);
 		frame.getContentPane().add(button);
 	}
-	public void print(){
-		Object[] object=new Object[4];
-		for(int i=0;i<BestFit.kongxianList.size();i++){
-			object[0]=i+1;
-			object[1]=BestFit.kongxianList.get(i).getStar();
-			object[2]=BestFit.kongxianList.get(i).getEnd();
-			object[3]=BestFit.kongxianList.get(i).getLength();
+
+	public void print() {
+		Object[] object = new Object[4];
+		for (int i = 0; i < BestFit.kongxianList.size(); i++) {
+			object[0] = i + 1;
+			object[1] = BestFit.kongxianList.get(i).getStar();
+			object[2] = BestFit.kongxianList.get(i).getEnd();
+			object[3] = BestFit.kongxianList.get(i).getLength();
 			tableModel.addRow(object);
 		}
 	}

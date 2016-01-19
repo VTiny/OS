@@ -30,10 +30,10 @@ public class CourseSimulate_2 extends JFrame implements ActionListener {
 	private EquipmentManagement equipmentManagement;
 	private int columnNum;
 
-
 	/**
 	 * Create the application.
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public CourseSimulate_2() throws IOException {
 		initialize();
@@ -41,54 +41,28 @@ public class CourseSimulate_2 extends JFrame implements ActionListener {
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	private void initialize() throws IOException {
 		this.setBounds(100, 100, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-		String[] columnNames = { "A资源数量", "B资源数量", "C资源数量"};
-		Object[][] cellData = { { "", "", ""} };
+		String[] columnNames = { "A资源数量", "B资源数量", "C资源数量" };
+		Object[][] cellData = { { "", "", "" } };
 		getContentPane().setLayout(null);
 		table = new JTable(cellData, columnNames);
 		table.setRowSelectionAllowed(false);
 		table.setBounds(135, 81, 1, 1);
 
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(0, 10, 434, 47);
+		scrollPane.setBounds(0, 10, 434, 58);
 		getContentPane().add(scrollPane);
 
 		button = new JButton("下一步");
 		button.setBounds(315, 213, 93, 23);
 		button.addActionListener(this);
 		getContentPane().add(button);
-		
-		JButton button_1 = new JButton("设备管理");
-		button_1.setBounds(73, 213, 93, 23);
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					new EquipmentManagementFrame();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-		getContentPane().add(button_1);
-		
-//		JScrollPane scrollPane_1 = new JScrollPane();
-//		scrollPane_1.setBounds(0, 93, 424, 81);
-//		getContentPane().add(scrollPane_1);
-//		
-//		equipmentManagement=new EquipmentManagement();
-//		equipmentManagement.init();
-//		columnNum=equipmentManagement.equipments.size();
-//		tableModel=new DefaultTableModel(0,columnNum);
-//		Object[] object=new Object[columnNum];
-//		tableModel.addRow(object);
-//		table_1 = new JTable(tableModel);
-//		table_1.setRowSelectionAllowed(false);
-//		scrollPane_1.setViewportView(table_1);
 
 	}
 
@@ -100,10 +74,7 @@ public class CourseSimulate_2 extends JFrame implements ActionListener {
 		Banker.resource[1] = Integer.parseInt((String) value1);
 		Object value2 = table.getValueAt(0, 2);
 		Banker.resource[2] = Integer.parseInt((String) value2);
-		Object[] values=new Object[columnNum];
-//		for(int i=0;i<columnNum;i++){
-//			values[i]=table_1.getValueAt(0, i);
-//		}
+		Object[] values = new Object[columnNum];
 		new CourseSimulate_3();
 		this.dispose();
 	}
