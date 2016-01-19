@@ -22,6 +22,7 @@ public class EquipmentManagementFrame extends BaseFrame implements ActionListene
     JMenuItem addItem = new JMenuItem("添加设备");
     JMenuItem deleteItem = new JMenuItem("删除设备");
     JMenuItem alterItem = new JMenuItem("修改设备");
+    JMenuItem quitItem = new JMenuItem("退出");
 
     public static void main(String[] args) throws Exception {
         EquipmentManagementFrame frame = new EquipmentManagementFrame();
@@ -40,9 +41,11 @@ public class EquipmentManagementFrame extends BaseFrame implements ActionListene
         menu.add(addItem);
         menu.add(alterItem);
         menu.add(deleteItem);
+        menu.add(quitItem);
         addItem.addActionListener(this);
         alterItem.addActionListener(this);
         deleteItem.addActionListener(this);
+        quitItem.addActionListener(this);
         this.getContentPane().add(menuBar, BorderLayout.NORTH);
 
 //        refresh();
@@ -99,6 +102,12 @@ public class EquipmentManagementFrame extends BaseFrame implements ActionListene
             System.out.println("alter");
             AlterEquipmentFrame alterFrame = new AlterEquipmentFrame();
             alterFrame.addWindowListener(this);
+        }
+
+        //---退出---
+        if (e.getSource() == quitItem) {
+            System.out.println("quit");
+            this.dispose();
         }
     }
 
