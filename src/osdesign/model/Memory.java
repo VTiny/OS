@@ -4,12 +4,14 @@ public class Memory {
 	private int star;
 	private int end;
 	private int length;
+	private MemState memState;
 
 	public Memory(int star, int end, int length) {
 		super();
 		this.setStar(star);
 		this.setEnd(end);
 		this.setLength(length);
+		this.memState=MemState.unused;
 	}
 
 	public Memory(int star, int end) {
@@ -17,9 +19,19 @@ public class Memory {
 		this.setStar(star);
 		this.setEnd(end);
 		this.setLength(end - star + 1);
+		this.memState=MemState.unused;
 	}
 
 	public Memory() {
+		this.memState=MemState.unused;
+	}
+
+	public MemState getMemState() {
+		return memState;
+	}
+
+	public void setMemState(MemState memState) {
+		this.memState = memState;
 	}
 
 	public int getLength() {

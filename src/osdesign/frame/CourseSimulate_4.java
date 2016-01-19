@@ -43,6 +43,7 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 	 * @throws IOException 
 	 */
 	private void initialize() throws InterruptedException, IOException {
+		bestFit.initMemory();
 		banker = new Banker();
 		this.setBounds(100, 100, 552, 342);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,6 +64,7 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "A", "B", "C", "Finish" };
 		tableModel = new DefaultTableModel(colunmNames, 0);
 		table = new JTable(tableModel);
+		table.setRowSelectionAllowed(false);
 		scrollpane = new JScrollPane(table);
 		scrollpane.setSize(516, 218);
 		scrollpane.setLocation(10, 45);
@@ -91,6 +93,15 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 		button.addActionListener(this);
 		button.setBounds(420, 273, 93, 23);
 		getContentPane().add(button);
+		
+		JButton button_1 = new JButton("内存使用情况");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg) {
+				new MemFrame();				
+			}
+		});
+		button_1.setBounds(67, 273, 129, 23);
+		getContentPane().add(button_1);
 
 		if (banker.banker_algorithm()) {
 			for (int i = 0; i < banker.safeQueue.size(); i++) {

@@ -1,5 +1,6 @@
 package osdesign.util;
 
+import osdesign.model.MemState;
 import osdesign.model.Memory;
 import osdesign.model.PCB;
 import osdesign.model.PCBState;
@@ -17,7 +18,7 @@ public class BestFit {
 	public Memory alloc(int MemoryLength) {
 		Memory nf = null;
 		for (Memory object : kongxianList) {
-			if (object.getLength() >= MemoryLength) {
+			if (object.getLength() >= MemoryLength&&object.getMemState().equals(MemState.unused)) {
 				nf = new Memory(object.getStar(), object.getStar() + MemoryLength - 1, MemoryLength);
 				int i = kongxianList.indexOf(object);
 				kongxianList.remove(i);
@@ -31,7 +32,6 @@ public class BestFit {
 		if (nf == null) {
 			return nf;
 		}
-		System.out.println();
 		return nf;
 	}
 
@@ -66,16 +66,6 @@ public class BestFit {
 					kongxianList.add(j, temp1);
 				}
 			}
-		}
-	}
-
-	public void run() throws InterruptedException {
-		for (PCB pcb : Banker.safeQueue) {
-			Memory m = alloc(pcb.getMemory());
-			pcb.setState(PCBState.RUN);
-			Thread.sleep(1000);
-			pcb.setState(PCBState.FINISH);
-			free(m);
 		}
 	}
 }
