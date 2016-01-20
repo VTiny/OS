@@ -3,6 +3,7 @@ package osdesign.frame;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,8 +29,9 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 	 * Create the application.
 	 * 
 	 * @throws InterruptedException
+	 * @throws IOException
 	 */
-	public CourseSimulate_4() throws InterruptedException {
+	public CourseSimulate_4() throws InterruptedException, IOException {
 		setTitle("模拟结果");
 		initialize();
 	}
@@ -38,10 +40,12 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 	 * Initialize the contents of the frame.
 	 * 
 	 * @throws InterruptedException
+	 * @throws IOException
 	 */
-	private void initialize() throws InterruptedException {
+	private void initialize() throws InterruptedException, IOException {
+		bestFit.initMemory();
 		banker = new Banker();
-		this.setBounds(100, 100, 552, 342);
+		this.setBounds(600, 280, 552, 342);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		this.setVisible(true);
@@ -60,6 +64,7 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "A", "B", "C", "Finish" };
 		tableModel = new DefaultTableModel(colunmNames, 0);
 		table = new JTable(tableModel);
+		table.setRowSelectionAllowed(false);
 		scrollpane = new JScrollPane(table);
 		scrollpane.setSize(516, 218);
 		scrollpane.setLocation(10, 45);
@@ -83,19 +88,32 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 		lblWork.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWork.setBounds(341, 31, 135, 15);
 		getContentPane().add(lblWork);
-		
+
 		JButton button = new JButton("返回");
 		button.addActionListener(this);
 		button.setBounds(420, 273, 93, 23);
 		getContentPane().add(button);
-		for (int i = 0; i < Banker.pcbNum; i++) {
-			print(i);
+
+		JButton button_1 = new JButton("内存使用情况");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg) {
+				new MemFrame();
+			}
+		});
+		button_1.setBounds(67, 273, 129, 23);
+		getContentPane().add(button_1);
+
+		if (banker.banker_algorithm()) {
+			for (int i = 0; i < banker.safeQueue.size(); i++) {
+				print(i);
+			}
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		new MainFrame();
+		this.dispose();
 	}
 
 	public void print(int i) {

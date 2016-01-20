@@ -3,6 +3,7 @@ package osdesign.frame;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,18 +15,6 @@ import osdesign.util.*;
 public class CourseSimulate_1 extends JFrame implements ActionListener {
 	private JTextField textField;
 	public static int pcbNum;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CourseSimulate_1 window = new CourseSimulate_1();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -41,30 +30,48 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		this.setBounds(100, 100, 450, 300);
+		this.setBounds(600, 280, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.setVisible(true);
 
-		JLabel label = new JLabel("请输入进程数");
-		label.setBounds(61, 97, 92, 37);
+		JLabel label = new JLabel("请输入进程数：");
+		label.setBounds(91, 104, 92, 37);
 		getContentPane().add(label);
 
 		textField = new JTextField();
-		textField.setBounds(163, 105, 66, 21);
+		textField.setBounds(218, 112, 66, 21);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
 		JButton button = new JButton("下一步");
 		button.addActionListener(this);
-		button.setBounds(319, 216, 93, 23);
+		button.setBounds(316, 213, 93, 23);
 		getContentPane().add(button);
+		
+		JButton button_1 = new JButton("默认值模拟");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				jump();
+			}
+		});
+		button_1.setBounds(74, 213, 124, 23);
+		getContentPane().add(button_1);
+	}
+	public void jump(){
+		new CourseSimulate_3();
+		this.dispose();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Banker.pcbNum = (Integer.parseInt(textField.getText()));
-		new CourseSimulate_2();
+		try {
+			new CourseSimulate_2();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		this.dispose();
 	}
 }
