@@ -18,7 +18,7 @@ public class Memory {
 		super();
 		this.setStar(star);
 		this.setEnd(end);
-		this.setLength(end - star + 1);
+		this.setLength(end - star+1);
 		this.memState = MemState.unused;
 	}
 

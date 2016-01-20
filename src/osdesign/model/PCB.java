@@ -7,6 +7,9 @@ public class PCB {
 	private int[] Allocation = new int[3];// 已分配矩阵
 	private int[] Need = new int[3];// 需求矩阵
 	private int[] Work = new int[3];
+	private PCBState state;// PCB状态
+	private int memory;// 所需内存
+	private int runTime;// 运行时间
 
 	public int[] getWork() {
 		return Work;
@@ -14,20 +17,6 @@ public class PCB {
 
 	public void setWork(int[] work) {
 		Work = work;
-	}
-
-	//
-	private PCBState state;// PCB状态
-	private int memory;// 所需内存
-	private int runTime;// 运行时间
-	private int[] equipment = new int[2];
-
-	public int[] getEquipment() {
-		return equipment;
-	}
-
-	public void setEquipment(int[] equipment) {
-		this.equipment = equipment;
 	}
 
 	public PCB() {

@@ -1,12 +1,10 @@
 package osdesign.frame;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -15,7 +13,6 @@ import osdesign.util.*;
 public class CourseSimulate_1 extends JFrame implements ActionListener {
 	private JTextField textField;
 	public static int pcbNum;
-
 	/**
 	 * Create the application.
 	 */
@@ -48,7 +45,7 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 		button.addActionListener(this);
 		button.setBounds(316, 213, 93, 23);
 		getContentPane().add(button);
-		
+
 		JButton button_1 = new JButton("默认值模拟");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -58,7 +55,8 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 		button_1.setBounds(74, 213, 124, 23);
 		getContentPane().add(button_1);
 	}
-	public void jump(){
+
+	public void jump() {
 		new CourseSimulate_3();
 		this.dispose();
 	}
@@ -69,7 +67,6 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 		try {
 			new CourseSimulate_2();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		this.dispose();

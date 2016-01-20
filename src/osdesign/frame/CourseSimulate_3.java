@@ -116,7 +116,6 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		int[] max = new int[3];
 		int[] allocation = new int[3];
 		int[] need = new int[3];
-		int[] equipment = new int[2];
 		int memory = 0;
 		int runTime = 0;
 		max[0] = Integer.parseInt((String) table.getValueAt(i, 1));
@@ -133,7 +132,6 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		pcb.setMax(max);
 		pcb.setAllocation(allocation);
 		pcb.setNeed(need);
-		pcb.setEquipment(equipment);
 		pcb.setMemory(memory);
 		pcb.setRunTime(runTime);
 	}
