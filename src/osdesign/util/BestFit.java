@@ -2,9 +2,6 @@ package osdesign.util;
 
 import osdesign.model.MemState;
 import osdesign.model.Memory;
-import osdesign.model.PCB;
-import osdesign.model.PCBState;
-
 import java.util.ArrayList;
 
 public class BestFit {

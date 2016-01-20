@@ -1,6 +1,5 @@
 package osdesign.util;
 
-import osdesign.model.EquipmentRequest;
 import osdesign.model.PCB;
 import osdesign.model.PCBState;
 
@@ -13,8 +12,6 @@ public class Banker {
 	public static ArrayList<PCB> safeQueue = new ArrayList<>();
 	public static int pcbNum = 0;
 	private int available[] = new int[3];
-	private EquipmentRequest equipmentRequest;
-	private EquipmentManagement equipmentManagement = new EquipmentManagement();
 
 	public ArrayList<PCB> getWaitQueue() {
 		return waitQueue;
@@ -35,19 +32,24 @@ public class Banker {
 			int num = 0;
 			for (PCB j : waitQueue) {
 				if (j.getState() != PCBState.FINISH) {
-					if (j.getNeed()[0] <= available[0] && j.getMax()[0] <= resource[0]) {
-						if (j.getNeed()[1] <= available[1] && j.getMax()[1] <= resource[1]) {
-							if (j.getNeed()[2] <= available[2] && j.getMax()[2] <= resource[2]) {
+					if(j.getMax()[0]>resource[0]){
+						return false;
+					}
+					if(j.getMax()[1]>resource[1]){
+						return false;
+					}
+					if(j.getMax()[2]>resource[2]){
+						return false;
+					}
+					if (j.getNeed()[0] <= available[0]) {
+						if (j.getNeed()[1] <= available[1]) {
+							if (j.getNeed()[2] <= available[2]) {
 								available[0] += j.getAllocation()[0];
 								j.getWork()[0] += available[0];
 								available[1] += j.getAllocation()[1];
 								j.getWork()[1] += available[1];
 								available[2] += j.getAllocation()[2];
 								j.getWork()[2] += available[2];
-								equipmentRequest = new EquipmentRequest("设备A", j.getEquipment()[0]);
-								equipmentManagement.run(equipmentRequest);
-								equipmentRequest = new EquipmentRequest("设备B", j.getEquipment()[1]);
-								equipmentManagement.run(equipmentRequest);
 								j.setState(PCBState.WAIT);
 								safeQueue.add(j);
 								j.setState(PCBState.FINISH);

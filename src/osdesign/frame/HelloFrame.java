@@ -41,7 +41,7 @@ public class HelloFrame extends JFrame implements ActionListener {
 		this.setVisible(true);
 		button.setBounds(168, 174, 93, 23);
 		this.getContentPane().add(button);
-		
+
 		JLabel label = new JLabel("操作系统模拟系统");
 		label.setFont(new Font("微软雅黑", Font.PLAIN, 16));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
