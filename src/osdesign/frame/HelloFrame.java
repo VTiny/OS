@@ -1,13 +1,10 @@
 package osdesign.frame;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
 
 public class HelloFrame extends JFrame implements ActionListener {
 	private JButton button;
@@ -38,6 +35,7 @@ public class HelloFrame extends JFrame implements ActionListener {
 
 		button = new JButton("进入系统");
 		button.addActionListener(this);
+		button.setSelected(false);
 		this.setVisible(true);
 		button.setBounds(168, 174, 93, 23);
 		this.getContentPane().add(button);
@@ -48,10 +46,20 @@ public class HelloFrame extends JFrame implements ActionListener {
 		label.setBounds(54, 40, 323, 84);
 		getContentPane().add(label);
 
+		this.setLocationRelativeTo(null);
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		new LoginFrame();
 		this.dispose();
 	}
+
+//	@Override
+//	public void paint(Graphics g) {
+//		super.paint(g);
+//		ImageIcon icon = new ImageIcon("background.png");
+//		Image image = icon.getImage();
+//		g.drawImage(image, 0, 0, null);
+//	}
 }

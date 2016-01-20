@@ -54,6 +54,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 		button.addActionListener(this);
 		button.setBounds(155, 211, 93, 23);
 		this.getContentPane().add(button);
+
+		this.setLocationRelativeTo(null);
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public class Editor extends JFrame {
     private JFileChooser filechooser = new JFileChooser(); //文件选择器
 
     public Editor() {
-        super("编辑器");
+        super("文本编辑器");
 
         Action[] actions =
                 {

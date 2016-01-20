@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by pokerface_lx
  */
-public class EquipmentManagementFrame extends BaseFrame implements ActionListener, WindowListener {
+public class EquipmentManagementFrame extends JFrame implements ActionListener, WindowListener {
 
     private JTable table = null;
     private EquipmentManagement management = null;
@@ -28,6 +28,10 @@ public class EquipmentManagementFrame extends BaseFrame implements ActionListene
         EquipmentManagementFrame frame = new EquipmentManagementFrame();
 //        TimeUnit.SECONDS.sleep(1);
         frame.init();
+    }
+
+    public EquipmentManagementFrame() throws IOException {
+        init();
     }
 
     private void init() throws IOException {
