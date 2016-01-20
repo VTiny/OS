@@ -29,7 +29,7 @@ public class EquipmentManagementFrame extends BaseFrame implements ActionListene
 
 	private void init() throws IOException {
 		this.setTitle("设备管理");
-		this.setSize(600, 400);
+		this.setSize(323, 268);
 		getContentPane().setLayout(new BorderLayout());
 
 		JMenuBar menuBar = new JMenuBar();
@@ -38,6 +38,7 @@ public class EquipmentManagementFrame extends BaseFrame implements ActionListene
 		menu.add(addItem);
 		menu.add(alterItem);
 		menu.add(deleteItem);
+		
 		addItem.addActionListener(this);
 		alterItem.addActionListener(this);
 		deleteItem.addActionListener(this);
