@@ -8,7 +8,7 @@ public class BestFit {
 	public static ArrayList<Memory> kongxianList = new ArrayList<Memory>();
 
 	public void initMemory() {
-		Memory Memory = new Memory(0, 1024);
+		Memory Memory = new Memory(0, 1023);
 		kongxianList.add(Memory);
 	}
 
