@@ -8,32 +8,34 @@ import java.awt.event.ActionListener;
 /**
  * Created by pokerface_lx
  */
-public class ErrorFrame extends JFrame implements ActionListener {
+public class ToastFrame extends JFrame implements ActionListener {
 
     private JButton confirmBtn;
-    private JButton cancelBtn;
 
-    public ErrorFrame(String error) {
-        this.setTitle("错误");
+    public ToastFrame(String toast) {
+
         this.setLayout(new BorderLayout());
 
-        JLabel errorLabel = new JLabel(error);
-        this.getContentPane().add(errorLabel, BorderLayout.NORTH);
+        JPanel toastPanel = new JPanel(new FlowLayout());
+        JLabel toastLabel = new JLabel(toast);
+        toastPanel.add(toastLabel);
 
         JPanel btnPanel = new JPanel(new FlowLayout());
+        JButton blankBtn = new JButton("占位");
         confirmBtn = new JButton("确认");
-        cancelBtn = new JButton("取消");
         confirmBtn.addActionListener(this);
-        cancelBtn.addActionListener(this);
-        btnPanel.add(cancelBtn);
+        btnPanel.add(blankBtn);
         btnPanel.add(confirmBtn);
-        cancelBtn.setVisible(false);
-        this.getContentPane().add(btnPanel, BorderLayout.SOUTH);
+        blankBtn.setVisible(false);
+
+        this.getContentPane().add(toastPanel, BorderLayout.NORTH);
+        this.getContentPane().add(btnPanel, BorderLayout.CENTER);
 
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     @Override

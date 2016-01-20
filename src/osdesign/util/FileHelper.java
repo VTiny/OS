@@ -25,6 +25,9 @@ public class FileHelper {
      * @return
      */
     public String getType(String path) {
+        if (path == null) {
+            return "null";
+        }
         String flagPath = path;
         String type = "";
         while (flagPath.contains(".")) {
@@ -45,7 +48,7 @@ public class FileHelper {
      * @param file
      * @return
      */
-    public static boolean deleteFile(File file) {
+    public boolean deleteFile(File file) {
         boolean result = false;
         try {
             if (file.isDirectory()) {
@@ -53,14 +56,15 @@ public class FileHelper {
                     for (File i : file.listFiles()) {
                         deleteFile(i);
                     }
+                    result = true;
                 } else {
                     file.delete();
+                    result = true;
                 }
             } else {
                 file.delete();
+                result = true;
             }
-            file.delete();
-            result = true;
         } catch (Exception e) {
             result = false;
             e.printStackTrace();
@@ -180,15 +184,6 @@ public class FileHelper {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String createTime = formatter.format(date);
         return createTime;
-    }
-
-    public static void main(String[] args) {
-        String path = "test.txt";
-        String type = null;
-        while (path.contains(".")) {
-            type = path.substring(path.indexOf(".") + 1, path.length());
-        }
-        System.out.println(type);
     }
 
 }
