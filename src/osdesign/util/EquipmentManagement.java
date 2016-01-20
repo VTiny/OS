@@ -225,4 +225,5 @@ public class EquipmentManagement {
 		fw.flush();
 		fw.close();
 	}
+
 }

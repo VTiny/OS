@@ -50,7 +50,7 @@ public class MemFrame {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setVisible(true);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(600, 280, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Object[] colunmNames = { "内存块", "Start", "End", "Length" };
 		tableModel = new DefaultTableModel(colunmNames, 0);

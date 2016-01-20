@@ -12,7 +12,6 @@ import java.io.IOException;
  * Created by pokerface_lx
  */
 public class DeleteEquipmentFrame extends BaseFrame implements ActionListener {
-
 	private JButton confirmBtn;
 	private JButton cancelBtn;
 	private JTextField nameTxt;

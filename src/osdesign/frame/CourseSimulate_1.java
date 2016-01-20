@@ -30,7 +30,7 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		this.setBounds(100, 100, 450, 300);
+		this.setBounds(600, 280, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.setVisible(true);
@@ -48,6 +48,19 @@ public class CourseSimulate_1 extends JFrame implements ActionListener {
 		button.addActionListener(this);
 		button.setBounds(316, 213, 93, 23);
 		getContentPane().add(button);
+		
+		JButton button_1 = new JButton("默认值模拟");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				jump();
+			}
+		});
+		button_1.setBounds(74, 213, 124, 23);
+		getContentPane().add(button_1);
+	}
+	public void jump(){
+		new CourseSimulate_3();
+		this.dispose();
 	}
 
 	@Override

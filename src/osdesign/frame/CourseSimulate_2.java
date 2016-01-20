@@ -36,6 +36,7 @@ public class CourseSimulate_2 extends JFrame implements ActionListener {
 	 * @throws IOException
 	 */
 	public CourseSimulate_2() throws IOException {
+		setTitle("进程模拟");
 		initialize();
 	}
 
@@ -45,7 +46,7 @@ public class CourseSimulate_2 extends JFrame implements ActionListener {
 	 * @throws IOException
 	 */
 	private void initialize() throws IOException {
-		this.setBounds(100, 100, 450, 300);
+		this.setBounds(600, 280, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		String[] columnNames = { "A资源数量", "B资源数量", "C资源数量" };

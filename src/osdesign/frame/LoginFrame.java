@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
 public class LoginFrame extends JFrame implements ActionListener {
@@ -26,25 +27,26 @@ public class LoginFrame extends JFrame implements ActionListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		this.setBounds(100, 100, 450, 300);
+		setLocationRelativeTo(null);
+		this.setBounds(600, 280, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.getContentPane().setLayout(null);
 		JLabel label = new JLabel("用户名：");
-		label.setBounds(38, 160, 54, 15);
+		label.setBounds(117, 81, 54, 15);
 		this.getContentPane().add(label);
 
 		JLabel label_1 = new JLabel("密码：");
-		label_1.setBounds(252, 160, 54, 15);
+		label_1.setBounds(117, 131, 54, 15);
 		this.getContentPane().add(label_1);
 
 		textField = new JTextField();
-		textField.setBounds(90, 157, 90, 21);
+		textField.setBounds(200, 78, 90, 21);
 		this.getContentPane().add(textField);
 		textField.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(287, 157, 90, 21);
+		textField_1 = new JPasswordField();
+		textField_1.setBounds(200, 128, 90, 21);
 		this.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 

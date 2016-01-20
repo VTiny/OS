@@ -38,7 +38,7 @@ public class EquipmentManagementFrame extends BaseFrame implements ActionListene
 		menu.add(addItem);
 		menu.add(alterItem);
 		menu.add(deleteItem);
-		
+
 		addItem.addActionListener(this);
 		alterItem.addActionListener(this);
 		deleteItem.addActionListener(this);

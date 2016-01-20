@@ -45,7 +45,7 @@ public class CourseSimulate_4 extends JFrame implements ActionListener {
 	private void initialize() throws InterruptedException, IOException {
 		bestFit.initMemory();
 		banker = new Banker();
-		this.setBounds(100, 100, 552, 342);
+		this.setBounds(600, 280, 552, 342);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		this.setVisible(true);

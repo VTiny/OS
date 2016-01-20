@@ -33,7 +33,7 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 	 */
 	private void initialize() {
 		this.setTitle("进程分配");
-		this.setBounds(100, 100, 516, 352);
+		this.setBounds(600, 280, 516, 352);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.setVisible(true);
@@ -54,13 +54,13 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		lblMax.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		lblMax.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMax.setLabelFor(table);
-		lblMax.setBounds(53, 30, 130, 15);
+		lblMax.setBounds(53, 30, 162, 15);
 		this.getContentPane().add(lblMax);
 
 		JLabel lblAllocation = new JLabel("Allocation");
 		lblAllocation.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAllocation.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-		lblAllocation.setBounds(182, 31, 130, 15);
+		lblAllocation.setBounds(225, 30, 141, 15);
 		this.getContentPane().add(lblAllocation);
 
 		button = new JButton("开始模拟");
@@ -104,12 +104,10 @@ public class CourseSimulate_3 extends JFrame implements ActionListener {
 		Banker.resource[0] = 10;
 		Banker.resource[1] = 5;
 		Banker.resource[2] = 7;
-		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C","内存", "时间" };
+		Object[] colunmNames = { "Name", "A", "B", "C", "A", "B", "C", "内存", "时间" };
 		Object[][] data = { { "P0", "7", "5", "3", "0", "1", "0", "5", "1" },
-				{ "P1", "3", "2", "2", "2", "0", "0","10", "2" },
-				{ "P2", "9", "0", "2", "3", "0", "2","15", "3" },
-				{ "P3", "2", "2", "2", "2", "1", "1","20", "4" },
-				{ "P4", "4", "3", "3", "0", "0", "2","25", "5" }};
+				{ "P1", "3", "2", "2", "2", "0", "0", "10", "2" }, { "P2", "9", "0", "2", "3", "0", "2", "15", "3" },
+				{ "P3", "2", "2", "2", "2", "1", "1", "20", "4" }, { "P4", "4", "3", "3", "0", "0", "2", "25", "5" } };
 		tableModel = new DefaultTableModel(data, colunmNames);
 		table.setModel(tableModel);
 	}
